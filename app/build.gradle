@@ -225,6 +225,8 @@ dependencies {
 
 def androidEspressoVersion = "3.5.1"
 dependencies {
+    implementation 'androidx.activity:activity:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     //the following are only added so that the app and test version both us the same versions
     androidTestImplementation 'com.google.android.material:material:1.11.0'
 
@@ -233,6 +235,7 @@ dependencies {
     androidTestImplementation 'androidx.test:rules:1.5.0'
 
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1'
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:' + androidEspressoVersion
     androidTestImplementation 'androidx.test.espresso:espresso-intents:' + androidEspressoVersion

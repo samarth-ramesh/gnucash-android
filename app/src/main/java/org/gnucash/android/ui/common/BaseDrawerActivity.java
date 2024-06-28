@@ -52,6 +52,7 @@ import org.gnucash.android.db.adapter.BooksDbAdapter;
 import org.gnucash.android.ui.account.AccountsActivity;
 import org.gnucash.android.ui.passcode.PasscodeLockActivity;
 import org.gnucash.android.ui.report.ReportsActivity;
+import org.gnucash.android.ui.search.SearchActivity;
 import org.gnucash.android.ui.settings.PreferenceActivity;
 import org.gnucash.android.ui.transaction.ScheduledActionsActivity;
 import org.gnucash.android.util.BookUtils;
@@ -263,6 +264,12 @@ public abstract class BaseDrawerActivity extends PasscodeLockActivity {
             case R.id.nav_item_reports: {
                 Intent intent = new Intent(this, ReportsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+            }
+            break;
+
+            case R.id.nav_item_search: {
+                Intent intent = new Intent(this, SearchActivity.class);setUpNavigationDrawer();
                 startActivity(intent);
             }
             break;

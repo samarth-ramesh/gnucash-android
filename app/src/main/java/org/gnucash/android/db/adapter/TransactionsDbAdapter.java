@@ -333,6 +333,18 @@ public class TransactionsDbAdapter extends DatabaseAdapter<Transaction> {
         return transactions;
     }
 
+    public List<Transaction> getAllTransactionsHavingString(String searchTerm) {
+        SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
+        queryBuilder.setTables(TransactionEntry.TABLE_NAME);
+        List<Transaction> transactions = new ArrayList<>();
+        try (Cursor c = queryBuilder.query(mDb, new String[]{TransactionEntry.TABLE_NAME + ".*"}, TransactionEntry.COLUMN_DESCRIPTION + " LIKE ?", new String[]{"%" + searchTerm + "%"}, null, null, TransactionEntry.TABLE_NAME + "." + TransactionEntry.COLUMN_TIMESTAMP)) {
+            while (c.moveToNext()) {
+                transactions.add(buildModelInstance(c));
+            }
+        }
+        return transactions;
+    }
+
     public Cursor fetchTransactionsWithSplits(String[] columns, @Nullable String where, @Nullable String[] whereArgs, @Nullable String orderBy) {
         return mDb.query(TransactionEntry.TABLE_NAME + " , " + SplitEntry.TABLE_NAME +
                         " ON " + TransactionEntry.TABLE_NAME + "." + TransactionEntry.COLUMN_UID +
